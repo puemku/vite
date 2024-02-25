@@ -18,8 +18,8 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          docker build -t puemmth/react_aws:0.1
-          docker push puemmth/react_aws:0.1
+          docker build -t puemmth/react_aws:v2
+          docker push puemmth/react_aws:v2
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
