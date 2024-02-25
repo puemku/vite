@@ -1,20 +1,13 @@
-# build react
-FROM node:18 as build
+FROM node:18
 
 WORKDIR /app
 
-COPY package.json ./
+COPY . /app/
 
-RUN npm install
-
-COPY . .
+RUN npm ci
 
 RUN npm run build
 
-FROM nginx:1.21.3
+EXPOSE 3000
 
-COPY --from=dist /app/dist /usr/share/nginx/html
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+CMD [ "npx", "serve", "dist" ]
